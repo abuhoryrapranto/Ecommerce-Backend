@@ -12,14 +12,12 @@ class PublicController extends Controller {
     public function saveUser(Request $request) {
         $this->validate($request,[
             'full_name' =>'required',
-            'email' => 'email|unique:users',
             'phone' => 'numeric|digits:10|required|unique:users',
             'password' => 'required|min:6'
         ]);
         
         $data = new User;
         $data->full_name = $request->full_name;
-        $data->email = $request->email;
         $data->phone = $request->phone;
         $data->password = Hash::make($request->password);
         $data->save();
@@ -34,7 +32,7 @@ class PublicController extends Controller {
 
     public function login(Request $request) {
         $this->validate($request, [
-            'phone'    => 'required|numeric|exists:admins|digits:10',
+            'phone'    => 'required|numeric|exists:users|digits:10',
             'password' => 'required|min:6'
         ],
         [
