@@ -83,7 +83,7 @@ class ProductController extends Controller
                         ->leftJoin('types', 'types.id', '=', 'products.type_id')
                         ->leftJoin('sub_types', 'sub_types.id', '=', 'products.sub_type_id')
                         ->where('products.status', 'published')
-                        ->where('types.name', $category)
+                        ->where('sub_types.name', $category)
                         ->orderByDesc('products.created_at')
                         ->get();
         if(!$data->isEmpty())
