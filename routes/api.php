@@ -27,4 +27,6 @@ Route::post('/logout', [PublicController::class, 'logout']);
 
 Route::prefix('v1')->group(function () {
     Route::get('/feature-products', [ProductController::class, 'getAllFeatureProducts']);
+    Route::get('/products/{category}', [ProductController::class, 'getProductByCategory']);
+    Route::get('/product-details/{slug}', [ProductController::class, 'getProductDetails']);
 });
