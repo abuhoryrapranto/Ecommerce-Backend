@@ -8,15 +8,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function getAllFeatureProducts() {
-        $data = Product::select('products.code as pd_code', 
-                                'products.slug as pd_slug',
-                                'products.name as pd_name', 
-                                'products.thumbnail as pd_thumbnail', 
-                                'products.main_price as pd_main_price', 
-                                'products.offer_price as pd_offer_price', 
-                                'brands.name as brand_name as pd_brand_name', 
-                                'types.name as type_name as pd_type_name', 
-                                'sub_types.name as sub_type_name as pd_sub_type_name'
+        $data = Product::select('products.code as code', 
+                                'products.slug as slug',
+                                'products.name as name', 
+                                'products.units as units', 
+                                'products.thumbnail as thumbnail', 
+                                'products.main_price as main_price', 
+                                'products.offer_price as offer_price', 
+                                'brands.name as brand_name as brand_name', 
+                                'types.name as type_name as type_name', 
+                                'sub_types.name as sub_type_name as sub_type_name'
                             )
                         ->leftJoin('brands', 'brands.id', '=', 'products.brand_id')
                         ->leftJoin('types', 'types.id', '=', 'products.type_id')
@@ -50,6 +51,7 @@ class ProductController extends Controller
             'code' => $product->code,
             'slug' => $product->slug,
             'name' => $product->name,
+            'units' => $product->units,
             'thumbnail' => $product->thumbnail,
             'main_price' => $product->main_price,
             'offer_price' => $product->offer_price,
@@ -69,12 +71,12 @@ class ProductController extends Controller
     }
 
     public function getProductByCategory($category) {
-        $data = Product::select('products.code as pd_code', 
-                                'products.slug as pd_slug',
-                                'products.name as pd_name', 
-                                'products.thumbnail as pd_thumbnail', 
-                                'products.main_price as pd_main_price', 
-                                'products.offer_price as pd_offer_price', 
+        $data = Product::select('products.code as code', 
+                                'products.slug as slug',
+                                'products.name as name', 
+                                'products.thumbnail as thumbnail', 
+                                'products.main_price as main_price', 
+                                'products.offer_price as offer_price', 
                                 'brands.name as brand_name', 
                                 'types.name as type_name', 
                                 'sub_types.name as sub_type_name'
