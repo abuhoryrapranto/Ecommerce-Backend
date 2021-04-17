@@ -73,7 +73,8 @@ class ProductController extends Controller
     public function getProductByCategory($category) {
         $data = Product::select('products.code as code', 
                                 'products.slug as slug',
-                                'products.name as name', 
+                                'products.name as name',
+                                'products.units as units',
                                 'products.thumbnail as thumbnail', 
                                 'products.main_price as main_price', 
                                 'products.offer_price as offer_price', 
