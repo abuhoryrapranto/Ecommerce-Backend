@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::prefix('v1')->group(function () {
     Route::post('/add-cart', [CartController::class, 'addCart']);
     Route::get('/show-cart', [CartController::class, 'showCart']);
 });
+
+Route::post('/save-order', [OrderController::class, 'saveOrder']);
